@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Profitual Benchmark MVP</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Profitual Benchmark MVP</h1>
+            <p>
+                Pick a sector, geography, and revenue stage — benchmarks are generated from the pipeline (no free-text description required).
+            </p>
+        </header>
+
+        <section class="card">
+            <h2>Generate Benchmarks</h2>
+
+            <form id="benchmark-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="industry_name">Industry</label>
+                        <select id="industry_name" name="industry_name" required>
+                            <option value="">Select an industry</option>
+                            <option value="B2B SaaS">B2B SaaS</option>
+                            <option value="AI SaaS">AI SaaS</option>
+                            <option value="Distilleries">Distilleries</option>
+                            <option value="Furniture Resale">Furniture Resale</option>
+                            <option value="Construction">Construction</option>
+                            <option value="CPA Firm">CPA Firm</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="geography">Geography</label>
+                        <select id="geography" name="geography" required>
+                            <option value="Canada">Canada</option>
+                            <option value="US">US</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company_stage">Company Stage</label>
+                        <select id="company_stage" name="company_stage" required>
+                            <option value="less_than_1M_revenue">Less than $1M revenue</option>
+                            <option value="1M_to_5M_revenue">$1M to $5M revenue</option>
+                            <option value="5M_to_20M_revenue">$5M to $20M revenue</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Generate Benchmarks</button>
+            </form>
+        </section>
+
+        <section id="loading" class="card hidden">
+            <p>Generating benchmarks...</p>
+        </section>
+
+        <section id="error-box" class="card error hidden">
+            <h3>Error</h3>
+            <p id="error-message"></p>
+        </section>
+
+        <section id="result" class="card hidden">
+            <div class="result-header">
+                <h2>Benchmark Results</h2>
+                <div id="summary"></div>
+            </div>
+
+            <div class="notes-block">
+                <h3>Pipeline Notes</h3>
+                <ul id="notes-list"></ul>
+            </div>
+
+            <div>
+                <h3>Metrics</h3>
+                <div id="metrics-list" class="metrics-grid"></div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const form = document.getElementById("benchmark-form");
+        const loadingBox = document.getElementById("loading");
+        const resultBox = document.getElementById("result");
+        const errorBox = document.getElementById("error-box");
+        const errorMessage = document.getElementById("error-message");
+        const summary = document.getElementById("summary");
+        const notesList = document.getElementById("notes-list");
+        const metricsList = document.getElementById("metrics-list");
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            loadingBox.classList.remove("hidden");
+            resultBox.classList.add("hidden");
+            errorBox.classList.add("hidden");
+            notesList.innerHTML = "";
+            metricsList.innerHTML = "";
+            summary.innerHTML = "";
+
+            const payload = {
+                industry_name: document.getElementById("industry_name").value,
+                geography: document.getElementById("geography").value,
+                company_stage: document.getElementById("company_stage").value
+            };
+
+            try {
+                const response = await fetch("/benchmark/generate", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const text = await response.text();
+                    throw new Error(text || "Request failed");
+                }
+
+                const data = await response.json();
+
+                summary.innerHTML = `
+                    <p><strong>Industry Code:</strong> ${data.industry_code}</p>
+                    <p><strong>Geography:</strong> ${data.geography}</p>
+                    <p><strong>Stage:</strong> ${data.company_stage}</p>
+                    <p><strong>Generated At:</strong> ${new Date(data.generated_at).toLocaleString()}</p>
+                `;
+
+                data.notes.forEach(note => {
+                    const li = document.createElement("li");
+                    li.textContent = note;
+                    notesList.appendChild(li);
+                });
+
+                data.metrics.forEach(metric => {
+                    const metricCard = document.createElement("div");
+                    metricCard.className = "metric-card";
+
+                    metricCard.innerHTML = `
+                        <h4>${metric.metric_name}</h4>
+                        <p><strong>Code:</strong> ${metric.metric_code}</p>
+                        <p><strong>Relevance:</strong> ${metric.relevance}</p>
+                        <p><strong>Benchmark:</strong> ${metric.benchmark_min} - ${metric.benchmark_max} (${metric.benchmark_unit})</p>
+                        <p><strong>Confidence:</strong> ${metric.confidence_score}</p>
+                        <p><strong>Why it matters:</strong> ${metric.why_it_matters}</p>
+                        <div class="source-box">
+                            <strong>Source:</strong>
+                            <p>${metric.sources[0].source_name}</p>
+                            <p>${metric.sources[0].quote_or_note}</p>
+                        </div>
+                    `;
+
+                    metricsList.appendChild(metricCard);
+                });
+
+                resultBox.classList.remove("hidden");
+            } catch (error) {
+                errorMessage.textContent = error.message;
+                errorBox.classList.remove("hidden");
+            } finally {
+                loadingBox.classList.add("hidden");
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,301 @@
+[
+  {
+    "lookup_key": "distilleries::canada::1m_to_5m_revenue::1",
+    "industry_name": "Distilleries",
+    "industry_code": "distilleries",
+    "geography": "canada",
+    "company_stage": "1m_to_5m_revenue",
+    "generated_at": "2026-04-15T20:40:11.648076+00:00",
+    "metrics": [
+      {
+        "metric_name": "Gross Margin",
+        "metric_code": "gross_margin",
+        "relevance": "high",
+        "benchmark_min": 0.4,
+        "benchmark_max": 0.55,
+        "benchmark_unit": "percentage",
+        "why_it_matters": "Shows how much revenue remains after direct costs.",
+        "confidence_score": 0.88,
+        "sources": [
+          {
+            "source_name": "distilleries.pdf (benchmark_facts.json)",
+            "source_type": "report",
+            "quote_or_note": "[Replace with statistic from your PDF] OPERATIONAL: Paste one short verbatim sentence from distilleries.pdf that supports this band."
+          }
+        ]
+      },
+      {
+        "metric_name": "Net Margin",
+        "metric_code": "net_margin",
+        "relevance": "medium",
+        "benchmark_min": 0.06,
+        "benchmark_max": 0.16,
+        "benchmark_unit": "percentage",
+        "why_it_matters": "Measures overall profitability after all expenses.",
+        "confidence_score": 0.7,
+        "sources": [
+          {
+            "source_name": "Demo Rules Engine",
+            "source_type": "manual",
+            "quote_or_note": "Heuristic demo band; replace by adding a row to benchmark_facts.json or running suggest-extract."
+          }
+        ]
+      },
+      {
+        "metric_name": "EBITDA Margin",
+        "metric_code": "ebitda_margin",
+        "relevance": "medium",
+        "benchmark_min": 0.12,
+        "benchmark_max": 0.26,
+        "benchmark_unit": "percentage",
+        "why_it_matters": "Helps evaluate operating profitability before financing and accounting effects.",
+        "confidence_score": 0.88,
+        "sources": [
+          {
+            "source_name": "distilleries.pdf (benchmark_facts.json)",
+            "source_type": "report",
+            "quote_or_note": "[Replace with statistic from your PDF] OPERATIONAL: Paste verbatim excerpt for EBITDA margin from distilleries.pdf."
+          }
+        ]
+      },
+      {
+        "metric_name": "Inventory Turnover",
+        "metric_code": "inventory_turnover",
+        "relevance": "high",
+        "benchmark_min": 1.4,
+        "benchmark_max": 2.6,
+        "benchmark_unit": "turns_per_year",
+        "why_it_matters": "Shows how efficiently inventory is sold and replaced.",
+        "confidence_score": 0.88,
+        "sources": [
+          {
+            "source_name": "distilleries.pdf (benchmark_facts.json)",
+            "source_type": "report",
+            "quote_or_note": "[Turns per year \u2014 verify units in PDF] OPERATIONAL: Paste verbatim excerpt for inventory / turnover from distilleries.pdf."
+          }
+        ]
+      },
+      {
+        "metric_name": "Days Inventory Outstanding",
+        "metric_code": "days_inventory_outstanding",
+        "relevance": "high",
+        "benchmark_min": 120.0,
+        "benchmark_max": 300.0,
+        "benchmark_unit": "days",
+        "why_it_matters": "Shows how long inventory sits before being sold.",
+        "confidence_score": 0.88,
+        "sources": [
+          {
+            "source_name": "distilleries.pdf (benchmark_facts.json)",
+            "source_type": "report",
+            "quote_or_note": "[Days \u2014 verify definition in PDF] OPERATIONAL: Paste verbatim excerpt for inventory days / aging from distilleries.pdf."
+          }
+        ]
+      },
+      {
+        "metric_name": "Cash Conversion Cycle",
+        "metric_code": "cash_conversion_cycle",
+        "relevance": "medium",
+        "benchmark_min": 60.0,
+        "benchmark_max": 180.0,
+        "benchmark_unit": "days",
+        "why_it_matters": "Measures how quickly the business turns investments into cash.",
+        "confidence_score": 0.7,
+        "sources": [
+          {
+            "source_name": "Demo Rules Engine",
+            "source_type": "manual",
+            "quote_or_note": "Heuristic demo band; replace by adding a row to benchmark_facts.json or running suggest-extract."
+          }
+        ]
+      },
+      {
+        "metric_name": "Current Ratio",
+        "metric_code": "current_ratio",
+        "relevance": "medium",
+        "benchmark_min": 1.3,
+        "benchmark_max": 2.2,
+        "benchmark_unit": "ratio",
+        "why_it_matters": "Indicates short-term liquidity and ability to cover current liabilities.",
+        "confidence_score": 0.7,
+        "sources": [
+          {
+            "source_name": "Demo Rules Engine",
+            "source_type": "manual",
+            "quote_or_note": "Heuristic demo band; replace by adding a row to benchmark_facts.json or running suggest-extract."
+          }
+        ]
+      },
+      {
+        "metric_name": "Operating Expense Ratio",
+        "metric_code": "operating_expense_ratio",
+        "relevance": "medium",
+        "benchmark_min": 0.22,
+        "benchmark_max": 0.38,
+        "benchmark_unit": "percentage",
+        "why_it_matters": "Shows how much revenue is consumed by operating expenses.",
+        "confidence_score": 0.7,
+        "sources": [
+          {
+            "source_name": "Demo Rules Engine",
+            "source_type": "manual",
+            "quote_or_note": "Heuristic demo band; replace by adding a row to benchmark_facts.json or running suggest-extract."
+          }
+        ]
+      }
+    ],
+    "notes": [
+      "Pipeline: industry mapping, optional stage/geo adjustments, sector-scoped retrieval, local JSON cache.",
+      "Resolved industry: distilleries",
+      "Geography: canada",
+      "Stage: 1m_to_5m_revenue",
+      "Retrieved source chunks: 5",
+      "benchmark_facts.json: 4 metrics use stored citation-backed bands; 4 metrics use heuristic demo rules.",
+      "Retrieval mode: lexical keyword overlap (used when the Chroma index is empty or semantic query returned no results).",
+      "Retrieval uses only ingested documents under source_docs/distilleries/.",
+      "Result was newly generated and saved to local JSON storage.",
+      "Optional: POST /benchmark/suggest-extract (OPENAI_API_KEY) to draft rows; merge into app/data/benchmark_facts.json after review."
+    ]
+  },
+  {
+    "lookup_key": "used_furniture_retail::canada::1m_to_5m_revenue::1",
+    "industry_name": "Furniture Resale",
+    "industry_code": "used_furniture_retail",
+    "geography": "canada",
+    "company_stage": "1m_to_5m_revenue",
+    "generated_at": "2026-04-15T20:40:11.677011+00:00",
+    "metrics": [
+      {
+        "metric_name": "Gross Margin",
+        "metric_code": "gross_margin",
+        "relevance": "high",
+        "benchmark_min": 0.45,
+        "benchmark_max": 0.55,
+        "benchmark_unit": "percentage",
+        "why_it_matters": "Shows how much revenue remains after direct costs.",
+        "confidence_score": 0.7,
+        "sources": [
+          {
+            "source_name": "Demo Rules Engine",
+            "source_type": "manual",
+            "quote_or_note": "Heuristic demo band; replace by adding a row to benchmark_facts.json or running suggest-extract."
+          }
+        ]
+      },
+      {
+        "metric_name": "Net Margin",
+        "metric_code": "net_margin",
+        "relevance": "medium",
+        "benchmark_min": 0.08,
+        "benchmark_max": 0.15,
+        "benchmark_unit": "percentage",
+        "why_it_matters": "Measures overall profitability after all expenses.",
+        "confidence_score": 0.7,
+        "sources": [
+          {
+            "source_name": "Demo Rules Engine",
+            "source_type": "manual",
+            "quote_or_note": "Heuristic demo band; replace by adding a row to benchmark_facts.json or running suggest-extract."
+          }
+        ]
+      },
+      {
+        "metric_name": "Inventory Turnover",
+        "metric_code": "inventory_turnover",
+        "relevance": "high",
+        "benchmark_min": 4.0,
+        "benchmark_max": 6.0,
+        "benchmark_unit": "turns_per_year",
+        "why_it_matters": "Shows how efficiently inventory is sold and replaced.",
+        "confidence_score": 0.7,
+        "sources": [
+          {
+            "source_name": "Demo Rules Engine",
+            "source_type": "manual",
+            "quote_or_note": "Heuristic demo band; replace by adding a row to benchmark_facts.json or running suggest-extract."
+          }
+        ]
+      },
+      {
+        "metric_name": "Days Inventory Outstanding",
+        "metric_code": "days_inventory_outstanding",
+        "relevance": "high",
+        "benchmark_min": 45.0,
+        "benchmark_max": 90.0,
+        "benchmark_unit": "days",
+        "why_it_matters": "Shows how long inventory sits before being sold.",
+        "confidence_score": 0.7,
+        "sources": [
+          {
+            "source_name": "Demo Rules Engine",
+            "source_type": "manual",
+            "quote_or_note": "Heuristic demo band; replace by adding a row to benchmark_facts.json or running suggest-extract."
+          }
+        ]
+      },
+      {
+        "metric_name": "Cash Conversion Cycle",
+        "metric_code": "cash_conversion_cycle",
+        "relevance": "medium",
+        "benchmark_min": 20.0,
+        "benchmark_max": 60.0,
+        "benchmark_unit": "days",
+        "why_it_matters": "Measures how quickly the business turns investments into cash.",
+        "confidence_score": 0.7,
+        "sources": [
+          {
+            "source_name": "Demo Rules Engine",
+            "source_type": "manual",
+            "quote_or_note": "Heuristic demo band; replace by adding a row to benchmark_facts.json or running suggest-extract."
+          }
+        ]
+      },
+      {
+        "metric_name": "Current Ratio",
+        "metric_code": "current_ratio",
+        "relevance": "medium",
+        "benchmark_min": 1.2,
+        "benchmark_max": 2.0,
+        "benchmark_unit": "ratio",
+        "why_it_matters": "Indicates short-term liquidity and ability to cover current liabilities.",
+        "confidence_score": 0.7,
+        "sources": [
+          {
+            "source_name": "Demo Rules Engine",
+            "source_type": "manual",
+            "quote_or_note": "Heuristic demo band; replace by adding a row to benchmark_facts.json or running suggest-extract."
+          }
+        ]
+      },
+      {
+        "metric_name": "Operating Expense Ratio",
+        "metric_code": "operating_expense_ratio",
+        "relevance": "medium",
+        "benchmark_min": 0.2,
+        "benchmark_max": 0.35,
+        "benchmark_unit": "percentage",
+        "why_it_matters": "Shows how much revenue is consumed by operating expenses.",
+        "confidence_score": 0.7,
+        "sources": [
+          {
+            "source_name": "Demo Rules Engine",
+            "source_type": "manual",
+            "quote_or_note": "Heuristic demo band; replace by adding a row to benchmark_facts.json or running suggest-extract."
+          }
+        ]
+      }
+    ],
+    "notes": [
+      "Pipeline: industry mapping, optional stage/geo adjustments, sector-scoped retrieval, local JSON cache.",
+      "Resolved industry: used furniture retail",
+      "Geography: canada",
+      "Stage: 1m_to_5m_revenue",
+      "Retrieved source chunks: 5",
+      "benchmark_facts.json: 0 metrics use stored citation-backed bands; 7 metrics use heuristic demo rules.",
+      "Retrieval mode: lexical keyword overlap (used when the Chroma index is empty or semantic query returned no results).",
+      "Input industry 'Furniture Resale' was normalized to 'used furniture retail'.",
+      "Result was newly generated and saved to local JSON storage.",
+      "Optional: POST /benchmark/suggest-extract (OPENAI_API_KEY) to draft rows; merge into app/data/benchmark_facts.json after review."
+    ]
+  }
+]

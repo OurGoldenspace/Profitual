@@ -1,0 +1,7 @@
+B2B SaaS companies usually prioritize recurring revenue growth, gross margin, churn rate, customer acquisition cost, and capital efficiency.
+
+Early-stage SaaS businesses under 1 million dollars in revenue often focus more on growth and retention than profitability.
+
+Gross margins for software businesses are generally higher than inventory-heavy businesses because delivery costs are lower.
+
+Burn multiple and LTV to CAC ratio are commonly used to evaluate how efficiently growth is being achieved.

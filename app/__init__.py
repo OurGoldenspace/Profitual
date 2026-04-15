@@ -1,0 +1,1 @@
+"""Profitual FastAPI application package."""
